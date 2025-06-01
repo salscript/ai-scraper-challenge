@@ -1,0 +1,22 @@
+{
+  "name": "ai-scraper-challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salscript/ai-scraper-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/salscript/ai-scraper-challenge/issues"
+  },
+  "homepage": "https://github.com/salscript/ai-scraper-challenge#readme",
+  "description": ""
+}
