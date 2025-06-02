@@ -6,7 +6,7 @@ This project is a simple AI-powered web scraper API built for the AI Scraper Cod
 
 - Accepts a URL via GET request
 - Scrapes content from the provided webpage
-- Uses AI via OpenRouter API (`deepseek-r1` model) to extract structured insights
+- Uses AI via OpenRouter API (`deepseek-r1-0528` model) to extract structured insights
 - Returns structured JSON output
 - Built with Node.js and Hapi.js
 
@@ -43,8 +43,7 @@ Follow the instructions below to run this project locally.
 
    ```
    DEEPSEEK_API_KEY=your_openrouter_api_key_here
-   You can get a free API key by registering at https://openrouter.ai. Make sure to select or enable the deepseek-r1 (a.k.a. deepseek-chat) model
-
+   You can get a free API key by registering at https://openrouter.ai. Make sure to select or enable the deepseek-r1-0528:free (a.k.a. deepseek-chat) model
    ```
 
 4. **Run the server**

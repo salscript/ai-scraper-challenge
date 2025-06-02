@@ -1,7 +1,6 @@
 import dotenv from "dotenv";
 import OpenAI from "openai";
 import playwright from "playwright";
-import UserAgent from "user-agents";
 import fs from "node:fs";
 
 dotenv.config();
@@ -33,7 +32,7 @@ function extractJsonFromText(text) {
 }
 
 async function callDeepSeek(htmlContent) {
-  console.log("html content:", htmlContent);
+  //   console.log("html content:", htmlContent);
   const prompt = `
       saya memiliki konten HTML dari halaman hasil pencarian eBay.
       Saya ingin kamu mengekstrak semua produk yang ditampilkan dari halaman ini, **hanya produk nyata (bukan iklan, banner, atau promosi)**.
@@ -66,7 +65,7 @@ async function callDeepSeek(htmlContent) {
 
   try {
     const response = await openai.chat.completions.create({
-      model: "deepseek/deepseek-r1:free",
+      model: "deepseek/deepseek-r1-0528:free",
       messages: [{ role: "user", content: prompt }],
     });
 
@@ -102,8 +101,10 @@ async function callDeepSeek(htmlContent) {
 
 async function extractSellerDescription(htmlContent) {
   const prompt = `
-    Berikan saya deskripsi produk dari seller dari konten HTML berikut.
-    Keluarkan hanya deskripsi sebagai teks biasa, tanpa tambahan apapun
+   Dari konten HTML berikut, ambil dan kembalikan hanya deskripsi produk dari seller.
+   Kembalikan hanya isi deskripsi produk sebagai **teks biasa dalam bentuk paragraf**, tanpa format tambahan, tanpa bullet list, tanpa penjelasan ulang, dan tanpa pembuka atau penutup.
+   
+   Jangan gunakan format list, markdown, atau penjelasan tambahan. Keluarkan hanya satu paragraf deskripsi bersih
 
     HTML:
     ${htmlContent}
@@ -111,7 +112,7 @@ async function extractSellerDescription(htmlContent) {
 
   try {
     const response = await openai.chat.completions.create({
-      model: "deepseek/deepseek-r1:free",
+      model: "deepseek/deepseek-r1-0528:free",
       messages: [{ role: "user", content: prompt }],
     });
 
@@ -218,6 +219,7 @@ async function fetchProductPage(url) {
             await iframeContext.close();
             await browser.close();
             return detail;
+            // const parsed = await extractSellerDescription(detail);
           } else {
             console.warn("Elemen '.x-item-description-child' tidak ditemukan.");
           }
