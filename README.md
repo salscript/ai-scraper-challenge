@@ -8,7 +8,7 @@ This project is a simple AI-powered web scraper API built for the AI Scraper Cod
 - Scrapes content from the provided webpage
 - Uses AI via OpenRouter API (`deepseek-r1` model) to extract structured insights
 - Returns structured JSON output
-- Built with Node.js and Express.js
+- Built with Node.js and Hapi.js
 
 ---
 
@@ -36,7 +36,6 @@ Follow the instructions below to run this project locally.
 
    ```
    npm install
-
    ```
 
 3. **Set up environment variables**
